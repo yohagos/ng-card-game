@@ -1,0 +1,135 @@
+/* .game-container {
+  position: relative;
+  height: 50vh;
+  border: 1px solid black;
+}
+
+.center-area {
+  min-height: 200px;
+  min-width: 200px;
+  border: 2px dashed #ccc;
+  margin: 0 auto;
+}
+
+.bottom-stack {
+  position: fixed;
+  bottom: 1em;
+  left: 30%;
+  transform: translateX(75%);
+}
+
+.card-stack {
+  position: relative;
+  height: 150px;
+  margin: 30px;
+}
+
+.stacked-card {
+  position: absolute;
+  width: 100px;
+  height: 150px;
+
+  border: 1px solid #333;
+  border-radius: 8px;
+  background: white;
+
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+
+  .corner {
+    position: absolute;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 600;
+
+    &.top-left {
+      top: 6px;
+      left: 4px;
+    }
+
+    &.bottom-right {
+      bottom: 6px;
+      right: 4px;
+      transform: rotate(180deg);
+    }
+  }
+
+  .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+  }
+}
+
+.♥, .♦ {
+  color: red;
+}
+
+.cdk-drag-dragging {
+  position: fixed !important;
+  z-index: 1000;
+  left: 0 !important;
+  top: 0 !important;
+  pointer-events: none;
+  opacity: .6;
+  cursor: grabbing;
+}
+
+ */
+
+.board {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 1.5rem;
+}
+
+.zone {
+  min-height: 130px;
+  min-width: 200px;
+  border: 2px dashed #555;
+  border-radius: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px;
+}
+
+.card {
+  width: 100px;
+  height: 150px;
+  background: #f1f1f1;
+  border: 1px solid #333;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  cursor: grab;
+}
+
+.top-left {
+    top: 6px;
+    left: 4px;
+  }
+
+  .bottom-right {
+    bottom: 6px;
+    right: 4px ;
+    transform: rotate(180deg);
+  }
+
+.cdk-drag-dragging {
+  opacity: 0.6;
+  cursor: grabbing;
+}
+
+.cdk-drag-placeholder {
+  background: #51ff8b96;
+}
+
+.♥, .♦ {
+  color: red;
+}

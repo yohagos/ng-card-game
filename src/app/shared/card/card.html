@@ -1,0 +1,119 @@
+<!-- <div class="game-container">
+  <div class="center-area" cdkDropList (cdkDropListDropped)="dropCard($event)">
+    <div *ngFor="let card of centerCards" cdkDrag class="playing-card">
+
+    </div>
+  </div>
+</div>
+
+<div class="bottom-stack">
+  <div cdkDropList [cdkDropListData]="stackCards" (cdkDropListDropped)="dropCard($event)">
+    <div class="card-stack">
+  <div
+    *ngFor="let card of getRandomCards(); let i = index"
+    class="stacked-card {{card.suit}}"
+    [style.z-index]="i"
+    [style.left.px]="i * 25"
+  >
+    <div class="corner top-left">
+      <div class="value">{{ card.value }}</div>
+      <div class="suit">{{ card.suit }}</div>
+    </div>
+    <div class="center">{{ card.suit }}</div>
+    <div class="corner bottom-right">
+      <div class="value">{{ card.value }}</div>
+      <div class="suit">{{ card.suit }}</div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
+ -->
+
+<!-- <div class="game-container" cdkDropListGroup>
+  <div
+    class="center-area"
+    cdkDropList
+    [cdkDropListData]="centerCards"
+    (cdkDropListDropped)="dropCard($event)"
+  >
+    <div *ngFor="let card of centerCards" cdkDrag class="playing-card {{ card.suit }}">
+      <div class="corner top-left">
+        <div class="value">{{ card.value }}</div>
+        <div class="suit">{{ card.suit }}</div>
+      </div>
+      <div class="center">{{ card.suit }}</div>
+      <div class="corner bottom-right">
+        <div class="value">{{ card.value }}</div>
+        <div class="suit">{{ card.suit }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="card-stack"
+  cdkDropList
+  [cdkDropListData]="stackCards"
+  (cdkDropListDropped)="dropCard($event)"
+>
+  <div
+    *ngFor="let card of stackCards; let i = index"
+    cdkDrag
+    class="stacked-card {{ card.suit }}"
+    [style.z-index]="i"
+    [style.left.px]="i * 25"
+  >
+    <div class="corner top-left">
+      <div class="value">{{ card.value }}</div>
+      <div class="suit">{{ card.suit }}</div>
+    </div>
+    <div class="center">{{ card.suit }}</div>
+    <div class="corner bottom-right">
+      <div class="value">{{ card.value }}</div>
+      <div class="suit">{{ card.suit }}</div>
+    </div>
+  </div>
+</div>
+ -->
+
+@if (loading()) {
+  loading...
+} @else {
+  <div class="board">
+  <div class="zone center"
+    cdkDropList
+    id="center"
+    [cdkDropListData]="centerCards"
+    [cdkDropListConnectedTo]="['stack']"
+    (cdkDropListDropped)="dropCard($event)"
+  >
+    <div *ngFor="let card of centerCards" cdkDrag class="card" > {{card}} </div>
+  </div>
+
+  <div class="zone stack"
+    cdkDropList
+    id="stack"
+    [cdkDropListData]="stackCards"
+    [cdkDropListConnectedTo]="['center']"
+    (cdkDropListDropped)="dropCard($event)"
+  >
+    <div *ngFor="let card of stackCards; let i = index"
+      cdkDrag
+      class="card {{card.suit}}">
+      <div class="corner top-left">
+        <div class="value"> {{card.value}} </div>
+        <div class="suit"> {{card.suit}} </div>
+      </div>
+      <div class="card-center">
+        {{card.suit}}
+      </div>
+      <div class="corner bottom-right">
+        <div class="value"> {{card.value}} </div>
+        <div class="suit"> {{card.suit}} </div>
+      </div>
+    </div>
+  </div>
+</div>
+}
+
