@@ -1,0 +1,7 @@
+<div class="toolbar">
+  @for (item of navMenu; track $index) {
+    <a class="item" routerLink="{{item.uri}}" routerLinkActive="true"> {{item.name}} </a>
+  }
+</div>
+
+<router-outlet></router-outlet>
