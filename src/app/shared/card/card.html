@@ -62,7 +62,12 @@
   >
     <div class="card-row">
       @for (card of userB; track $index) {
-      <div class="card {{ card.suit }}"></div>
+      <div class="card {{ card.suit }}" cdkDrag>
+        <div class="corner top-left">
+        <div class="value">{{ card.value }}</div>
+        <div class="suit">{{ card.suit }}</div>
+      </div>
+      </div>
       }
     </div>
   </div>
@@ -73,15 +78,37 @@
     [cdkDropListData]="userB"
     [cdkDropListConnectedTo]="['center']"
     (cdkDropListDropped)="dropCard($event)"
-  ></div>
+  >
+<div class="card-row">
+      @for (card of userB; track $index) {
+      <div class="card {{ card.suit }}" cdkDrag>
+        <div class="corner top-left">
+        <div class="value">{{ card.value }}</div>
+        <div class="suit">{{ card.suit }}</div>
+      </div>
+      </div>
+      }
+    </div>
+</div>
   <div
     class="zone center"
     cdkDropList
     id="center"
     [cdkDropListData]="centerCards"
-    [cdkDropListConnectedTo]="['userA userB userC userD']"
+    [cdkDropListConnectedTo]="['userA,userB,userC,userD']"
     (cdkDropListDropped)="dropCard($event)"
-  ></div>
+  >
+  <div class="card-row">
+      @for (card of centerCards; track $index) {
+      <div class="card {{ card.suit }}" cdkDrag>
+<div class="corner top-left">
+        <div class="value">{{ card.value }}</div>
+        <div class="suit">{{ card.suit }}</div>
+      </div>
+      </div>
+      }
+    </div>
+</div>
   <div
     class="zone right-center"
     cdkDropList
@@ -89,7 +116,18 @@
     [cdkDropListData]="userC"
     [cdkDropListConnectedTo]="['stack']"
     (cdkDropListDropped)="dropCard($event)"
-  ></div>
+  >
+<div class="card-row">
+      @for (card of userB; track $index) {
+      <div class="card {{ card.suit }}" cdkDrag>
+        <div class="corner top-left">
+        <div class="value">{{ card.value }}</div>
+        <div class="suit">{{ card.suit }}</div>
+      </div>
+      </div>
+      }
+    </div>
+</div>
   <div
     class="zone bottom-center"
     cdkDropList
@@ -97,5 +135,16 @@
     [cdkDropListData]="userD"
     [cdkDropListConnectedTo]="['stack']"
     (cdkDropListDropped)="dropCard($event)"
-  ></div>
+  >
+<div class="card-row">
+      @for (card of userB; track $index) {
+      <div class="card {{ card.suit }}" cdkDrag>
+        <div class="corner top-left">
+        <div class="value">{{ card.value }}</div>
+        <div class="suit">{{ card.suit }}</div>
+      </div>
+      </div>
+      }
+    </div>
+</div>
 </div>

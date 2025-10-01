@@ -74,9 +74,9 @@ export class Card implements OnInit, OnDestroy {
   getRandomCards() {
     const shuffled = [...this.cards].sort(() => 0.5 - Math.random())
     this.userA = this.sortCards(shuffled.splice(0, 13))
-    this.userB = this.sortCards(shuffled.splice(0, 13))
-    this.userC = this.sortCards(shuffled.splice(0, 13))
-    this.userD = this.sortCards(shuffled.splice(0, 13))
+    this.userB = this.sortCards(shuffled.splice(13, 26))
+    this.userC = this.sortCards(shuffled.splice(26, 39))
+    this.userD = this.sortCards(shuffled.splice(39, 52))
   }
 
   dropCard(event: CdkDragDrop<string[]>) {
