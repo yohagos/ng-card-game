@@ -31,7 +31,12 @@ export class Card implements OnInit, OnDestroy {
   cards: any[] = []
   randomCards: any[] = []
 
-  stackCards: any[] = []
+  userA: any[] = []
+  userB: any[] = []
+  userC: any[] = []
+  userD: any[] = []
+
+  //stackCards: any[] = []
   centerCards: any[] = []
 
   constructor() {
@@ -43,7 +48,7 @@ export class Card implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.stackCards = this.getRandomCards()
+    this.getRandomCards()
     this.loading.set(false)
   }
 
@@ -68,7 +73,10 @@ export class Card implements OnInit, OnDestroy {
 
   getRandomCards() {
     const shuffled = [...this.cards].sort(() => 0.5 - Math.random())
-    return this.sortCards(shuffled.slice(0, 13))
+    this.userA = this.sortCards(shuffled.splice(0, 13))
+    this.userB = this.sortCards(shuffled.splice(0, 13))
+    this.userC = this.sortCards(shuffled.splice(0, 13))
+    this.userD = this.sortCards(shuffled.splice(0, 13))
   }
 
   dropCard(event: CdkDragDrop<string[]>) {

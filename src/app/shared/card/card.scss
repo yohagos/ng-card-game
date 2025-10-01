@@ -1,85 +1,4 @@
-/* .game-container {
-  position: relative;
-  height: 50vh;
-  border: 1px solid black;
-}
-
-.center-area {
-  min-height: 200px;
-  min-width: 200px;
-  border: 2px dashed #ccc;
-  margin: 0 auto;
-}
-
-.bottom-stack {
-  position: fixed;
-  bottom: 1em;
-  left: 30%;
-  transform: translateX(75%);
-}
-
-.card-stack {
-  position: relative;
-  height: 150px;
-  margin: 30px;
-}
-
-.stacked-card {
-  position: absolute;
-  width: 100px;
-  height: 150px;
-
-  border: 1px solid #333;
-  border-radius: 8px;
-  background: white;
-
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-
-  .corner {
-    position: absolute;
-    text-align: center;
-    font-size: 14px;
-    line-height: 1;
-    font-weight: 600;
-
-    &.top-left {
-      top: 6px;
-      left: 4px;
-    }
-
-    &.bottom-right {
-      bottom: 6px;
-      right: 4px;
-      transform: rotate(180deg);
-    }
-  }
-
-  .center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 40px;
-  }
-}
-
-.♥, .♦ {
-  color: red;
-}
-
-.cdk-drag-dragging {
-  position: fixed !important;
-  z-index: 1000;
-  left: 0 !important;
-  top: 0 !important;
-  pointer-events: none;
-  opacity: .6;
-  cursor: grabbing;
-}
-
- */
-
-.board {
+/* .board {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -132,4 +51,72 @@
 
 .♥, .♦ {
   color: red;
+} */
+
+/* layout.scss */
+.board{
+  display:grid;
+  grid-template-areas:
+    ".    top   ."
+    "left mid   right"
+    ".    bot   .";
+  grid-template-columns:1fr 1fr 1fr;
+  grid-template-rows:1fr 1fr 1fr;
+  height:92vh;
+  gap:1rem;
+  padding:1rem;
+  box-sizing:border-box;
 }
+.zone{
+  border:2px dashed #666;
+  border-radius:8px;
+  background:#fafafa;
+}
+.to-center     {grid-area:top;}
+.left-center   {grid-area:left;}
+.center        {grid-area:mid;}
+.right-center  {grid-area:right;}
+.bottom-center {grid-area:bot;}
+
+.to-center,
+.bottom-center{
+  flex-direction:row;
+  align-items:center;
+  justify-content:center;
+}
+
+.left-center,
+.right-center{
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
+.card-row {
+  display:flex;
+  gap:6px;
+  padding:8px;
+}
+
+.card{
+  width:60px;
+  height:88px;
+  background:#fff;
+  border:1px solid #333;
+  border-radius:4px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  font-size:18px;
+  cursor:pointer;
+  box-shadow:1px 1px 3px rgba(0,0,0,.25);
+}
+
+.suit{
+  font-size:22px;
+  line-height:1;
+}
+
+.♥, .♦{ color:red; }
