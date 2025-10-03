@@ -1,31 +1,42 @@
-import { CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { StartNewGameModal } from '../../shared/start-new-game-modal/start-new-game-modal';
+import { ScoreModal } from '../../shared/score-modal/score-modal';
+import { SelectPointsModal } from '../../shared/select-points-modal/select-points-modal';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-game',
   imports: [
-    /* CommonModule,
-    CdkDrag,
-CdkDropList, */
+    MatButtonModule,
+    MatDialogModule,
+    MatIconModule,
   ],
   templateUrl: './game.html',
   styleUrl: './game.scss'
 })
 export class Game {
-/* stack = Array.from({ length: 13 }, (_, i) => `Karte ${i + 1}`);
-  center: string[] = [];
+  readonly dialog = inject(MatDialog)
 
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
-    }
-  } */
+  restartGame() {
+    const dialogRef = this.dialog.open(StartNewGameModal)
+
+    console.log('clicked on restart')
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
+    })
+  }
+
+  showScore() {
+    const dialogRef = this.dialog.open(ScoreModal)
+    console.log('clicked on restart')
+  }
+
+  selectPoints() {
+    const dialogRef = this.dialog.open(SelectPointsModal)
+
+    dialogRef.afterClosed().subscribe(result => console.log(result))
+  }
 }
