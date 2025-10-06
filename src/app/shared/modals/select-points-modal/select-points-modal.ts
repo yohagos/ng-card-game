@@ -17,10 +17,6 @@ export class SelectPointsModal {
   readonly points = model(this.point)
 
   pick(val: number): number {
-    /* console.log('Value chosen => ', val)
-    this.point = val
-    console.log('Value chosen (POINTS) => ', this.point)
-    console.log('Value chosen (POINTS) => ', this.points) */
     this.dialogRef.close()
     return val;
   }

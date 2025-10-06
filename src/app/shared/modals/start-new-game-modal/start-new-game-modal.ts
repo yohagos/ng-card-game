@@ -15,7 +15,6 @@ export class StartNewGameModal {
   readonly dialogRef = inject(MatDialogRef<StartNewGameModal>)
 
   restartGame() {
-    console.log('Restart Game was chosen!')
     this.dialogRef.close()
   }
 }
