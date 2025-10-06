@@ -1,97 +1,110 @@
-<div class="board">
+<div class="container">
   <div
-    class="zone to-center"
+    class="top"
     cdkDropList
     id="userA"
-    [cdkDropListData]="userC"
+    [cdkDropListData]="user_a()"
     [cdkDropListConnectedTo]="['center']"
     (cdkDropListDropped)="dropCard($event)"
   >
     <div class="card-row">
-      @for (card of userA; track $index) {
-      <div class="card {{ card.suit }}" cdkDrag>
+      @for (card of user_a(); track $index ) {
+      <div class="card card-bg {{ card.suit }}"
+[style.z-index]="$index"
+        [style.transform]="'translateX(' + ($index * -15) + 'px)'"
+      cdkDrag>
         <div class="corner top-left">
-        <div class="value">{{ card.value }}</div>
-        <div class="suit">{{ card.suit }}</div>
-      </div>
+          <div class="value">{{ card.value }}</div>
+          <div class="suit">{{ card.suit }}</div>
+        </div>
       </div>
       }
     </div>
   </div>
   <div
-    class="zone left-center"
+    class="left"
     cdkDropList
     id="userB"
-    [cdkDropListData]="userB"
+    [cdkDropListData]="user_b()"
     [cdkDropListConnectedTo]="['center']"
     (cdkDropListDropped)="dropCard($event)"
   >
-<div class="card-row">
-      @for (card of userB; track $index) {
-      <div class="card {{ card.suit }}" cdkDrag>
+    <div class="card-row">
+      @for (card of user_b(); track $index) {
+      <div class="card card-bg {{ card.suit }}"
+[style.z-index]="$index"
+        [style.transform]="'translateX(' + ($index * -15) + 'px)'"
+      cdkDrag>
         <div class="corner top-left">
-        <div class="value">{{ card.value }}</div>
-        <div class="suit">{{ card.suit }}</div>
-      </div>
+          <div class="value">{{ card.value }}</div>
+          <div class="suit">{{ card.suit }}</div>
+        </div>
       </div>
       }
     </div>
-</div>
+  </div>
   <div
-    class="zone center"
+    class="center"
     cdkDropList
     id="center"
     [cdkDropListData]="centerCards"
-    [cdkDropListConnectedTo]="['userA','userB','userC','userD']"
+    [cdkDropListConnectedTo]="['userA', 'userB', 'userC', 'userD']"
     (cdkDropListDropped)="dropCard($event)"
   >
-  <div class="card-row">
+    <div class="card-row">
       @for (card of centerCards; track $index) {
       <div class="card {{ card.suit }}" cdkDrag>
-<div class="corner top-left">
-        <div class="value">{{ card.value }}</div>
-        <div class="suit">{{ card.suit }}</div>
-      </div>
+        <div class="corner top-left">
+          <div class="value">{{ card.value }}</div>
+          <div class="suit">{{ card.suit }}</div>
+        </div>
       </div>
       }
     </div>
-</div>
+  </div>
   <div
-    class="zone right-center"
+    class="right"
     cdkDropList
     id="userC"
-    [cdkDropListData]="userC"
+    [cdkDropListData]="user_c()"
     [cdkDropListConnectedTo]="['center']"
     (cdkDropListDropped)="dropCard($event)"
   >
-<div class="card-row">
-      @for (card of userC; track $index) {
-      <div class="card {{ card.suit }}" cdkDrag>
+    <div class="card-row">
+      @for (card of user_c(); track $index) {
+      <div
+        class="card card-bg {{ card.suit }}"
+        [style.z-index]="$index"
+        [style.transform]="'translateX(' + ($index * -15) + 'px)'"
+        cdkDrag>
         <div class="corner top-left">
-        <div class="value">{{ card.value }}</div>
-        <div class="suit">{{ card.suit }}</div>
-      </div>
+          <div class="value">{{ card.value }}</div>
+          <div class="suit">{{ card.suit }}</div>
+        </div>
       </div>
       }
     </div>
-</div>
+  </div>
   <div
-    class="zone bottom-center"
+    class="bottom"
     cdkDropList
     id="userD"
-    [cdkDropListData]="userD"
+    [cdkDropListData]="user_d()"
     [cdkDropListConnectedTo]="['center']"
     (cdkDropListDropped)="dropCard($event)"
   >
-<div class="card-row">
-      @for (card of userD; track $index) {
-      <div class="card {{ card.suit }}" cdkDrag>
+    <div class="card-row">
+      @for (card of user_d(); track $index) {
+      <div class="card {{ card.suit }}"
+[style.z-index]="$index"
+        [style.transform]="'translateX(' + ($index * -15) + 'px)'"
+      cdkDrag>
         <div class="corner top-left">
-        <div class="value">{{ card.value }}</div>
-        <div class="suit">{{ card.suit }}</div>
-      </div>
+          <div class="value">{{ card.value }}</div>
+          <div class="suit">{{ card.suit }}</div>
+        </div>
       </div>
       }
     </div>
-</div>
+  </div>
 </div>

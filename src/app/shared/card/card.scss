@@ -1,33 +1,26 @@
-.board{
-  display:grid;
+ /* .board {
+  display: grid;
   grid-template-areas:
     ". top ."
-    "left mid right"
-    ". bot .";
-  grid-template-columns:1fr 1fr 1fr;
-  grid-template-rows:1fr 1fr 1fr;
-  height:92vh;
-  gap:0.5rem;
-  padding:1rem;
-  box-sizing:border-box;
+    "left center right"
+    ". bottom .";
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: auto 1fr auto;
+  height: 90vh;
+  gap: 0;
+  margin: 0;
+  padding: 0;
 }
-.zone{
-  border:2px dashed #666;
-  border-radius:8px;
-  background:#fafafa;
-  max-width: 500px;
-}
+
 .to-center     {grid-area:top;}
 .left-center   {grid-area:left;}
-.center        {grid-area:mid;}
+.center        {grid-area:center;}
 .right-center  {grid-area:right;}
-.bottom-center {grid-area:bot;}
+.bottom-center {grid-area:bottom;}
 
-.to-center,
-.bottom-center{
-  flex-direction:row;
-  align-items:center;
-  justify-content:center;
+.zone {
+  border: 1px solid #ccc;
+  padding: 0;
 }
 
 .left-center,
@@ -39,26 +32,116 @@
 
 .to-center {
   transform: rotate(180deg);
+  height: 10em;
 }
 
 .left-center {
   transform: rotate(90deg);
+  margin-top: 20em;
+  height: fit-content;
 }
 
 .right-center {
   transform: rotate(270deg);
-}
+  height: auto;
+} */
+
+.container {
+            display: grid;
+            grid-template-areas:
+                "top top top"
+                "left center right"
+                "bottom bottom bottom";
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 3fr 1fr;
+            height: 100vh;
+            gap: 0;
+        }
+
+        .top {
+            grid-area: top;
+            _background-color: #4a86e8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            _color: white;
+            font-weight: bold;
+            border: 2px dotted #4a86e8;
+
+            transform: rotate(180deg);
+        }
+
+        .left {
+            grid-area: left;
+            _background-color: #6aa84f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            _color: white;
+            _font-weight: bold;
+            border: 2px dotted #6aa84f;
+
+            transform: rotate(90deg);
+        }
+
+        .center {
+            grid-area: center;
+            _background-color: #e69138;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            _color: white;
+            _font-weight: bold;
+            border: 2px dotted #e69138;
+        }
+
+        .right {
+            grid-area: right;
+            _background-color: #cc0000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            _color: white;
+            font-weight: bold;
+            border: 2px dotted #cc0000;
+
+            transform: rotate(270deg);
+        }
+
+        .bottom {
+            grid-area: bottom;
+            _background-color: #674ea7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            _color: white;
+            font-weight: bold;
+            border: 2px dotted #674ea7;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-areas:
+                    "top"
+                    "left"
+                    "center"
+                    "right"
+                    "bottom";
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 2fr 1fr 1fr;
+            }
+        }
 
 .card-row {
   display:flex;
+  margin: auto;
   gap:2px;
   padding:4px;
 }
 
 .card{
   width:55px;
-  height:88px;
-  background:#fff;
+  height:90px;
   border:1px solid #333;
   border-radius:4px;
   display:flex;
@@ -68,7 +151,8 @@
   font-weight:bold;
   font-size:16px;
   cursor:pointer;
-  box-shadow:1px 1px 3px rgba(0,0,0,.25);
+  box-shadow:2px 2px 5px rgba(0,0,0,.25);
+  background: white;
 }
 
 .suit{
@@ -77,3 +161,7 @@
 }
 
 .♥, .♦{ color:red; }
+
+.card-bg {
+  //background: radial-gradient(circle,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 35%, rgba(237, 221, 83, 1) 100%);
+}

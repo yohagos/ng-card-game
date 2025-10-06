@@ -34,6 +34,11 @@ export class Card implements OnInit, OnDestroy {
   userC: any[] = []
   userD: any[] = []
 
+  user_a = signal(<any>[])
+  user_b = signal(<any>[])
+  user_c = signal(<any>[])
+  user_d = signal(<any>[])
+
   centerCards: any[] = []
 
   constructor() {
@@ -70,20 +75,26 @@ export class Card implements OnInit, OnDestroy {
 
   getRandomCards() {
     const shuffled = [...this.cards].sort(() => 0.5 - Math.random())
-    this.userA = this.sortCards(shuffled.splice(0, 13))
+    /* this.userA = this.sortCards(shuffled.splice(0, 13))
     this.userB = this.sortCards(shuffled.splice(0, 13))
     this.userC = this.sortCards(shuffled.splice(0, 13))
-    this.userD = this.sortCards(shuffled.splice(0, 13))
+    this.userD = this.sortCards(shuffled.splice(0, 13)) */
 
-    console.log('Shuffled List of cards | Before => ', shuffled)
+    this.user_a.set(this.sortCards(shuffled.splice(0, 13)))
+    this.user_b.set(this.sortCards(shuffled.splice(0, 13)))
+    this.user_c.set(this.sortCards(shuffled.splice(0, 13)))
+    this.user_d.set(this.sortCards(shuffled.splice(0, 13)))
+
+    /* console.log('Shuffled List of cards | Before => ', shuffled)
     console.log('User a cards => ', this.userA)
     console.log('User b cards => ', this.userB)
     console.log('User c cards => ', this.userC)
     console.log('User d cards => ', this.userD)
-    console.log('Shuffled List of cards | After => ', shuffled)
+    console.log('Shuffled List of cards | After => ', shuffled) */
   }
 
   dropCard(event: CdkDragDrop<string[]>) {
+    console.log('Card dropped => ', event)
    if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -97,6 +108,7 @@ export class Card implements OnInit, OnDestroy {
         event.previousIndex,
         event.currentIndex
       )
+
    }
   }
 
