@@ -1,6 +1,5 @@
-<div class="container">
-  <div
-    class="top"
+ <div class="table">
+  <div class="trap top"
     cdkDropList
     id="userA"
     [cdkDropListData]="user_a()"
@@ -14,15 +13,13 @@
         [style.transform]="'translateX(' + ($index * -15) + 'px)'"
       cdkDrag>
         <div class="corner top-left">
-          <div class="value">{{ card.value }}</div>
-          <div class="suit">{{ card.suit }}</div>
+
         </div>
       </div>
       }
     </div>
   </div>
-  <div
-    class="left"
+  <div class="trap left"
     cdkDropList
     id="userB"
     [cdkDropListData]="user_b()"
@@ -36,8 +33,7 @@
         [style.transform]="'translateX(' + ($index * -15) + 'px)'"
       cdkDrag>
         <div class="corner top-left">
-          <div class="value">{{ card.value }}</div>
-          <div class="suit">{{ card.suit }}</div>
+
         </div>
       </div>
       }
@@ -62,9 +58,7 @@
       }
     </div>
   </div>
-  <div
-    class="right"
-    cdkDropList
+  <div class="trap right" cdkDropList
     id="userC"
     [cdkDropListData]="user_c()"
     [cdkDropListConnectedTo]="['center']"
@@ -78,15 +72,13 @@
         [style.transform]="'translateX(' + ($index * -15) + 'px)'"
         cdkDrag>
         <div class="corner top-left">
-          <div class="value">{{ card.value }}</div>
-          <div class="suit">{{ card.suit }}</div>
+          
         </div>
       </div>
       }
     </div>
   </div>
-  <div
-    class="bottom"
+  <div class="trap bottom"
     cdkDropList
     id="userD"
     [cdkDropListData]="user_d()"
@@ -107,4 +99,4 @@
       }
     </div>
   </div>
-</div>
+ </div>
