@@ -1,0 +1,11 @@
+<div class="panel">
+  <div class="title">Turn: {{currentPlayer()}}</div>
+  <div class="high">Highest Points: {{highBid()}}</div>
+
+  <div class="buttons">
+    @for (n of numbers; track $index) {
+      <button mat-flat-button [disabled]="isForbidden(n)" (click)="bid(n)">{{n}}</button>
+    }
+    <button class="pass" (click)="pass()">Pass</button>
+  </div>
+</div>
