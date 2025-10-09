@@ -1,0 +1,24 @@
+.suits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3rem;
+  justify-content: center;
+  padding: 2.4rem 2.5rem;
+  margin: auto;
+}
+
+.suit-btn {
+  width: 64px;
+  height: 64px;
+  font-size: 2rem;
+}
+
+.♥, .♦ {
+  color: red;
+  box-shadow: 2px 2px 5px red;
+}
+.♠, .♣ {
+  color: black;
+  box-shadow: 2px 2px 5px black;
+}
