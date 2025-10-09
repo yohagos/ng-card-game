@@ -8,5 +8,116 @@
   </button>
 
   <button mat-flat-button (click)="selectPoints()">num pad</button>
+
+  <button mat-flat-button (click)="chooseTrump()">suits</button>
 </div>
+
+@if (biddingService.currentPlayer$()) {
+  <app-bid-panel></app-bid-panel>
+}
+
+
+ <div class="table">
+  <div class="trap top"
+    cdkDropList
+    id="userA"
+    [cdkDropListData]="user_a()"
+    [cdkDropListConnectedTo]="['center']"
+    (cdkDropListDropped)="dropCard($event)"
+  >
+    <div class="card-row">
+      @for (card of user_a(); track $index ) {
+      <div class="card card-bg {{ card.suit }}"
+[style.z-index]="$index"
+        [style.transform]="'translateX(' + ($index * -15) + 'px)'"
+      cdkDrag>
+        <div class="corner top-left">
+
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  <div class="trap left"
+    cdkDropList
+    id="userB"
+    [cdkDropListData]="user_b()"
+    [cdkDropListConnectedTo]="['center']"
+    (cdkDropListDropped)="dropCard($event)"
+  >
+    <div class="card-row">
+      @for (card of user_b(); track $index) {
+      <div class="card card-bg {{ card.suit }}"
+[style.z-index]="$index"
+        [style.transform]="'translateX(' + ($index * -15) + 'px)'"
+      cdkDrag>
+        <div class="corner top-left">
+
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  <div
+    class="center"
+    cdkDropList
+    id="center"
+    [cdkDropListData]="centerCards"
+    [cdkDropListConnectedTo]="['userA', 'userB', 'userC', 'userD']"
+    (cdkDropListDropped)="dropCard($event)"
+  >
+    <div class="card-row">
+      @for (card of centerCards; track $index) {
+      <div class="card {{ card.suit }}" cdkDrag>
+        <div class="corner top-left">
+          <div class="value">{{ card.value }}</div>
+          <div class="suit">{{ card.suit }}</div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  <div class="trap right" cdkDropList
+    id="userC"
+    [cdkDropListData]="user_c()"
+    [cdkDropListConnectedTo]="['center']"
+    (cdkDropListDropped)="dropCard($event)"
+  >
+    <div class="card-row">
+      @for (card of user_c(); track $index) {
+      <div
+        class="card card-bg {{ card.suit }}"
+        [style.z-index]="$index"
+        [style.transform]="'translateX(' + ($index * -15) + 'px)'"
+        cdkDrag>
+        <div class="corner top-left">
+
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  <div class="trap bottom"
+    cdkDropList
+    id="userD"
+    [cdkDropListData]="user_d()"
+    [cdkDropListConnectedTo]="['center']"
+    (cdkDropListDropped)="dropCard($event)"
+  >
+    <div class="card-row">
+      @for (card of user_d(); track $index) {
+      <div class="card {{ card.suit }}"
+[style.z-index]="$index"
+        [style.transform]="'translateX(' + ($index * -15) + 'px)'"
+      cdkDrag>
+        <div class="corner top-left">
+          <div class="value">{{ card.value }}</div>
+          <div class="suit">{{ card.suit }}</div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+ </div>
+
 

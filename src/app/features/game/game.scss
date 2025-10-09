@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 .menu {
   width: 100%;
   border: 2px dotted #666;
@@ -16,3 +18,121 @@
     margin-right: 0;
   }
 }
+
+$diag-pct: 20%;
+$inner-pct: 20%;
+
+.table {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  place-content: center;
+}
+
+.trap {
+  position: absolute;
+  background: rgba(0, 0, 0, .15);
+  clip-path: polygon(var(--p));
+}
+
+
+.top {
+  top: 0; left: 0; right: 0;
+  height: calc(50% - #{$diag-pct});
+  --p: 0 0, 100% 0, calc(50% + #{$diag-pct}) 100%, calc(50% - #{$diag-pct}) 100%;
+
+  .card-row {
+    margin: calc(5%) calc(16%) calc(56%) calc(2%);
+    transform: rotate(180deg);
+  }
+}
+
+
+.bottom {
+  bottom: 0; left: 0; right: 0;
+  height: calc(50% - #{$diag-pct});
+  --p: calc(50% - #{$diag-pct}) 0, calc(50% + #{$diag-pct}) 0, 100% 100%, 0 100%;
+
+  .card-row {
+    margin: calc(8%) calc(0%) calc(56%) calc(24%);
+  }
+}
+
+
+.left {
+  top: 0; bottom: 0; left: 0;
+  width: calc(50% - #{$diag-pct});
+  --p: 0 0, 100% calc(50% - #{$diag-pct}), 100% calc(50% + #{$diag-pct}), 0 100%;
+
+  .card-row {
+    margin: calc(172%) calc(-85%) 0 calc(-130%);
+    transform: rotate(90deg);
+  }
+}
+
+
+.right {
+  top: 0; bottom: 0; right: 0;
+  width: calc(50% - #{$diag-pct});
+  --p: 0 calc(50% - #{$diag-pct}), 100% 0, 100% 100%, 0 calc(50% + #{$diag-pct});
+
+  .card-row {
+    margin: calc(32%) calc(-170%) 0 calc(-130%);
+    transform: rotate(270deg);
+  }
+}
+
+
+.center {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: $inner-pct;
+  height: $inner-pct;
+  background: rgba(255, 0, 0, .1);
+}
+
+.card-row {
+  display: flex;
+  margin: auto;
+  gap: 2px;
+  padding: 4px;
+}
+
+.card {
+  width: 55px;
+  height: 90px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+  background: white;
+}
+
+.suit {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.♥,
+.♦ {
+  color: red;
+}
+
+.card-bg {
+  background: radial-gradient(
+    circle,
+    rgba(42, 123, 155, 1) 0%,
+    rgba(87, 199, 133, 1) 35%,
+    rgba(237, 221, 83, 1) 100%
+  );
+}
+
