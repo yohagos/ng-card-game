@@ -1,0 +1,10 @@
+<div class="card {{card.suit }}"
+  cdkDrag
+  [class.disabled]="!isAllowed()"
+  [class.valid]="isAllowed()"
+>
+  <div class="corner topleft">
+    <div class="value">{{card.value}}</div>
+    <div class="suit">{{card.suit}}</div>
+  </div>
+</div>
