@@ -1,4 +1,4 @@
-@use 'sass:math';
+/* @use 'sass:math';
 
 .menu {
   width: 100%;
@@ -20,7 +20,7 @@
 }
 
 $diag-pct: 20%;
-$inner-pct: 20%;
+$inner-pct: 20%; */
 
 .table {
   position: relative;
@@ -32,16 +32,24 @@ $inner-pct: 20%;
 }
 
 .trap {
-  position: absolute;
+  /* position: absolute;
   background: rgba(0, 0, 0, .15);
-  clip-path: polygon(var(--p));
+  clip-path: polygon(var(--p)); */
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px;
+  min-height: 120px;
+  min-width: 90px;
 }
 
 
 .top {
   top: 0; left: 0; right: 0;
-  height: calc(50% - #{$diag-pct});
-  --p: 0 0, 100% 0, calc(50% + #{$diag-pct}) 100%, calc(50% - #{$diag-pct}) 100%;
+  height: calc(50% - 30vw);
+  --p: 0 0, 100% 0, calc(50% + 30vw) 100%, calc(50% - 30vw) 100%;
 
   .card-row {
     margin: calc(5%) calc(16%) calc(56%) calc(2%);
@@ -52,8 +60,8 @@ $inner-pct: 20%;
 
 .bottom {
   bottom: 0; left: 0; right: 0;
-  height: calc(50% - #{$diag-pct});
-  --p: calc(50% - #{$diag-pct}) 0, calc(50% + #{$diag-pct}) 0, 100% 100%, 0 100%;
+  height: calc(50% - 30vw);
+  --p: calc(50% - 30vw) 0, calc(50% + 30vw) 0, 100% 100%, 0 100%;
 
   .card-row {
     margin: calc(8%) calc(0%) calc(56%) calc(24%);
@@ -63,8 +71,8 @@ $inner-pct: 20%;
 
 .left {
   top: 0; bottom: 0; left: 0;
-  width: calc(50% - #{$diag-pct});
-  --p: 0 0, 100% calc(50% - #{$diag-pct}), 100% calc(50% + #{$diag-pct}), 0 100%;
+  width: calc(50% - 20vw);
+  --p: 0 0, 100% calc(50% - 30vw), 100% calc(50% + 30vw), 0 100%;
 
   .card-row {
     margin: calc(172%) calc(-85%) 0 calc(-130%);
@@ -75,8 +83,8 @@ $inner-pct: 20%;
 
 .right {
   top: 0; bottom: 0; right: 0;
-  width: calc(50% - #{$diag-pct});
-  --p: 0 calc(50% - #{$diag-pct}), 100% 0, 100% 100%, 0 calc(50% + #{$diag-pct});
+  width: calc(50% - 30vw);
+  --p: 0 calc(50% - 30vw), 100% 0, 100% 100%, 0 calc(50% + 30vw);
 
   .card-row {
     margin: calc(32%) calc(-170%) 0 calc(-130%);
@@ -89,9 +97,14 @@ $inner-pct: 20%;
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: $inner-pct;
-  height: $inner-pct;
+  width: 50vw;
+  height: 30vw;
   background: rgba(255, 0, 0, .1);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 }
 
 .card-row {
@@ -101,7 +114,7 @@ $inner-pct: 20%;
   padding: 4px;
 }
 
-.card {
+/* .card {
   width: 55px;
   height: 90px;
   border: 1px solid #333;
@@ -115,6 +128,15 @@ $inner-pct: 20%;
   cursor: pointer;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
   background: white;
+
+  transition: transform .2s;
+  &.disabled {
+    opacity: .4;
+    filter: grayscale(1);
+  }
+  &.valid {
+    box-shadow: 0 0 6px 2px #4caf50;
+  }
 }
 
 .suit {
@@ -134,5 +156,5 @@ $inner-pct: 20%;
     rgba(87, 199, 133, 1) 35%,
     rgba(237, 221, 83, 1) 100%
   );
-}
+}*/
 

@@ -1,4 +1,4 @@
-<div class="menu">
+<!-- <div class="menu">
   <button mat-flat-button (click)="showScore()">
     <mat-icon> leaderboard </mat-icon>
   </button>
@@ -10,15 +10,13 @@
   <button mat-flat-button (click)="selectPoints()">num pad</button>
 
   <button mat-flat-button (click)="chooseTrump()">suits</button>
-</div>
-
-@if (biddingService.currentPlayer$()) {
-  <app-bid-panel></app-bid-panel>
-}
+</div> -->
 
 
- <div class="table">
-  <div class="trap top"
+
+<!-- <div class="table">
+  <div
+    class="trap top"
     cdkDropList
     id="userA"
     [cdkDropListData]="user_a()"
@@ -27,18 +25,19 @@
   >
     <div class="card-row">
       @for (card of user_a(); track $index ) {
-      <div class="card card-bg {{ card.suit }}"
-[style.z-index]="$index"
-        [style.transform]="'translateX(' + ($index * -15) + 'px)'"
-      cdkDrag>
-        <div class="corner top-left">
-
-        </div>
+      <div
+        class="card card-bg {{ card.suit }}"
+        [style.z-index]="$index"
+        [style.transform]="'translateX(' + $index * -15 + 'px)'"
+        cdkDrag
+      >
+        <div class="corner top-left"></div>
       </div>
       }
     </div>
   </div>
-  <div class="trap left"
+  <div
+    class="trap left"
     cdkDropList
     id="userB"
     [cdkDropListData]="user_b()"
@@ -47,13 +46,13 @@
   >
     <div class="card-row">
       @for (card of user_b(); track $index) {
-      <div class="card card-bg {{ card.suit }}"
-[style.z-index]="$index"
-        [style.transform]="'translateX(' + ($index * -15) + 'px)'"
-      cdkDrag>
-        <div class="corner top-left">
-
-        </div>
+      <div
+        class="card card-bg {{ card.suit }}"
+        [style.z-index]="$index"
+        [style.transform]="'translateX(' + $index * -15 + 'px)'"
+        cdkDrag
+      >
+        <div class="corner top-left"></div>
       </div>
       }
     </div>
@@ -67,17 +66,14 @@
     (cdkDropListDropped)="dropCard($event)"
   >
     <div class="card-row">
-      @for (card of centerCards; track $index) {
-      <div class="card {{ card.suit }}" cdkDrag>
-        <div class="corner top-left">
-          <div class="value">{{ card.value }}</div>
-          <div class="suit">{{ card.suit }}</div>
-        </div>
-      </div>
+      @for (card of hands()[from]; track card) {
+        <app-card [card]="card" [hand]="hands()[from]" [trickCards]="trickCards()"> </app-card>
       }
     </div>
   </div>
-  <div class="trap right" cdkDropList
+  <div
+    class="trap right"
+    cdkDropList
     id="userC"
     [cdkDropListData]="user_c()"
     [cdkDropListConnectedTo]="['center']"
@@ -88,16 +84,16 @@
       <div
         class="card card-bg {{ card.suit }}"
         [style.z-index]="$index"
-        [style.transform]="'translateX(' + ($index * -15) + 'px)'"
-        cdkDrag>
-        <div class="corner top-left">
-
-        </div>
+        [style.transform]="'translateX(' + $index * -15 + 'px)'"
+        cdkDrag
+      >
+        <div class="corner top-left"></div>
       </div>
       }
     </div>
   </div>
-  <div class="trap bottom"
+  <div
+    class="trap bottom"
     cdkDropList
     id="userD"
     [cdkDropListData]="user_d()"
@@ -106,10 +102,12 @@
   >
     <div class="card-row">
       @for (card of user_d(); track $index) {
-      <div class="card {{ card.suit }}"
-[style.z-index]="$index"
-        [style.transform]="'translateX(' + ($index * -15) + 'px)'"
-      cdkDrag>
+      <div
+        class="card {{ card.suit }}"
+        [style.z-index]="$index"
+        [style.transform]="'translateX(' + $index * -15 + 'px)'"
+        cdkDrag
+      >
         <div class="corner top-left">
           <div class="value">{{ card.value }}</div>
           <div class="suit">{{ card.suit }}</div>
@@ -118,6 +116,90 @@
       }
     </div>
   </div>
- </div>
+</div> -->
+
+<div class="table">
+  <div class="trap top"
+    cdkDropList
+    id="top"
+    [cdkDropListData]="hands().top"
+    (cdkDropListDropped)="play($event)"
+    >
+    <div class="card-row">
+@for (card of hands().top; track $index) {
+      <app-card class="carg-bg"
+        [card]="card"
+        [hand]="hands().top"
+        [trickCards]="trickCards()">
+      </app-card>
+    }
+    </div>
+
+  </div>
+  <div class="trap left"
+    cdkDropList
+    id="left"
+    [cdkDropListData]="hands().left"
+    (cdkDropListDropped)="play($event)"
+  >
+    <div class="card-row">
+@for (card of hands().left; track $index) {
+      <app-card
+        [card]="card"
+        [hand]="hands().left"
+        [trickCards]="trickCards()">
+      </app-card>
+    }
+    </div>
+
+  </div>
+  <div class="trap right"
+    cdkDropList
+    id="right"
+    [cdkDropListData]="hands().right"
+    (cdkDropListDropped)="play($event)"
+  >
+    <div class="card-row">
+      @for (card of hands().right; track $index) {
+      <app-card
+        [card]="card"
+        [hand]="hands().right"
+        [trickCards]="trickCards()">
+      </app-card>
+    }
+    </div>
+  </div>
+  <div class="trap bottom"
+    cdkDropList
+    id="bottom"
+    [cdkDropListData]="hands().bottom"
+    (cdkDropListDropped)="play($event)"
+  >
+  <div class="card-row">
+    @for (card of hands().bottom; track $index) {
+      <app-card
+        [card]="card"
+        [hand]="hands().bottom"
+        [trickCards]="trickCards()">
+      </app-card>
+    }
+  </div>
+
+  </div>
+  <div class="center"
+    cdkDropList
+    id="center"
+    [cdkDropListData]="trick()"
+    (cdkDropListDropped)="dropToCenter($event)"
+    [cdkDropListConnectedTo]="['top', 'left', 'right', 'bottom']"
+  >
+    @for (p of trick(); track $index) {
+      <app-card [card]="p.card" [hand]="[]" [trickCards]="trickCards()"></app-card>
+    }
+  </div>
+</div>
 
 
+<!-- @if (biddingService.currentPlayer$()) {
+<app-bid-panel></app-bid-panel>
+} -->
